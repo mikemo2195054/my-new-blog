@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>ABC300 - D</title>
+    <link rel="stylesheet" href="../css/poststyle.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+
+<body class="container">
+    <h1><center>ABC300 - D</center></h1>
+    <p>
+        This problem is a high-quality problem that well practiced ability of deriving formulas and calculating time complexity.
+    </p>
+    <p>
+        When \(x\leq N\) can be expressed as \(a^2bc^2\) where \(a\), \(b\) and \(c\) are prime and \(a < b < c\), only \(c^2\) can be greater than \(\sqrt{N}\). 
+        Therefore, since \(\sqrt{N} < c^2 < N \leq 10^{12}\), \(c\) can be at most \(10^6\). Therefore, we only need to filterize all primes under \(10^6\).
+    </p>
+    <p>
+        Then, we should determine the range of \(a\). We know that \(a^5 < a^2bc^2 \leq N \leq 10^{12}\), so \(a < \sqrt[5]{N} \leq 10^{\frac{12}{5}} \approx 251.19\). 
+        For the range of \(b\), since \(a^2b^3 < a^2bc^2 \leq N\), we can see that \(b < \sqrt[3]{\frac{N}{a^2}} \leq \sqrt[3]{\frac{10^{12}}{4}} \approx 6299.61\).
+    </p>
+    <p>
+        If \(a\) and \(b\) are known, we only need to determine the number of prime numbers between \(b+1\) and \(\frac{N}{ab}\). 
+        Therefore, the answer can be expressed as
+        \[
+        \sum_{a \in \mathbb{P} \cap \left[ 2,\sqrt[5]{N} \right] }
+        \sum_{b \in \mathbb{P} \cap \left[ a+1,\sqrt[3]{\frac{N}{a^2}} \right] }
+        \left\lvert \mathbb{P} \cap \left[ b+1,\frac{N}{ab} \right] \right\rvert
+        \]
+        This can be done using a prefix sum of \(\texttt{isprime}\) array. The time complexity of the algorithm will be
+        \[
+        O\left( \sqrt[5]{N} \sqrt[3]{\frac{N}{a^2}} \right) = O\left( N^{\frac{8}{15}} \right)
+        \]
+    </p>
+</body>
+
+</html>
