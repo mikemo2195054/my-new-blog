@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <title>ABC298 - D</title>
+    <link rel="stylesheet" href="../css/poststyle.css">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+
+<body class="container">
+    <h1>
+        <center>ABC298 - D</center>
+    </h1>
+    <p>
+        This problem is an interesting problem about digits and number theory, and it requires a decent level of
+        understanding of moduli.
+    </p>
+    <p>
+        At first, we need to transform all operations into the form of modulo. Let \(P = 998244353\) be the modulus.
+        Assume \(n\) is the current number modulo \(P\), the current number has \(d\) digits, and the first digit is \(f\) then
+        <ul>
+            <li>Operation 1 can be expressed as \(n\rightarrow (10n+x)\bmod P,\ d\rightarrow d+1\).</li>
+            <li>Operation 2 can be expressed as \(n\rightarrow n - 10^d f,\ d\rightarrow d-1\).</li>
+            <li>Operation 3 can be expressed as output the value of \(n\).</li>
+        </ul>
+        Now, each operation can be done within \(O(1)\) time, as long as we are able to maintain \(f\). 
+        The first digit \(f\) can be easily maintained by a queue that push \(x\) in operation 1 and pop in operation 2, both of which can be done in \(O(1)\).
+    </p>
+</body>
+
+</html>
